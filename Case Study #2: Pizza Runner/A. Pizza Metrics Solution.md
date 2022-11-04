@@ -42,13 +42,30 @@ ORDER BY runner_id;
 
 #### Answer:
 | runner_id   | successful_orders |
-| ----------- | -----------      |
-| 1           | 4                |
-| 2           | 3                |
-| 3           | 1                |
+| ----------- | -----------       |
+| 1           | 4                 |
+| 2           | 3                 |
+| 3           | 1                 |
 
 
+### 4. How many of each type of pizza was delivered?
 
+````sql
+SELECT pizza_name, COUNT(c.pizza_id) as delivered_pizza_count
+FROM pizza_runner.customer_orders as c
+LEFT JOIN pizza_runner.runner_orders as r
+ON r.order_id = c.order_id
+LEFT JOIN pizza_runner.pizza_names as p
+ON p.pizza_id = c.pizza_id
+WHERE distance != 'null'
+GROUP BY p.pizza_name;
+````
+
+#### Answer:
+| pizza_name   | delivered_pizza_count |
+| -----------  | --------------------  |
+| Meatlovers   | 9                     |
+| Vegetarian   | 3                     |
 
 
 
