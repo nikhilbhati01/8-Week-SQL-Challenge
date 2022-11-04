@@ -133,7 +133,19 @@ WHERE distance != 'null' AND exclusions NOT IN ('','null') AND extras NOT IN (''
 |               1                 |
 
 
+### 8. What was the total volume of pizzas ordered for each hour of the day?
 
+````sql
+SELECT EXTRACT (HOUR FROM order_time) AS hour_of_day, COUNT(pizza_id) as pizza_count
+FROM pizza_runner.customer_orders
+GROUP BY hour_of_day
+ORDER BY hour_of_day;
+````
+
+#### Answer:
+| hour_of_day | pizza_count |
+| ----------- | ----------  |
+| 4           | 3           |
 
 
 
