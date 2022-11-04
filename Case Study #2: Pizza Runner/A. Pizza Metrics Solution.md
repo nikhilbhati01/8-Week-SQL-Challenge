@@ -117,7 +117,7 @@ LIMIT 1;
 | 4           | 3                |
 
 
-### Q7. How many pizzas were delivered that had both exclusions and extras?
+### 7. How many pizzas were delivered that had both exclusions and extras?
 
 ````sql
 SELECT COUNT(pizza_id) as pizza_count_w_exclusions_extras
