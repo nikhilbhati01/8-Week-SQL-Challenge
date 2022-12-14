@@ -153,10 +153,31 @@ ORDER BY hour_of_day;
 | 23          | 3           |
 
 
+### 9. What was the volume of orders for each day of the week?
 
+````sql
+WITH subb as (SELECT extract(dow from customer_orders.order_time) AS day_of_week, customer_orders.order_id AS orderr
+FROM pizza_runner.customer_orders)
 
+SELECT CASE 
+WHEN day_of_week = 1 THEN 'Monday'
+WHEN day_of_week = 2 THEN 'Tuesday'
+WHEN day_of_week = 3 THEN 'Wednesday'
+WHEN day_of_week = 4 THEN 'Thursday'
+WHEN day_of_week = 5 THEN 'Friday'
+WHEN day_of_week = 6 THEN 'Saturday'
+WHEN day_of_week = 7 THEN 'Sunday'
+END AS day_of_week, COUNT(orderr) AS total_pizza_ordered
+FROM subb
+GROUP BY day_of_week
+ORDER BY total_pizza_ordered DESC;
 
-
-
+````
+| day_of_week | total_pizza_ordered |
+| ----------- | ----------  |
+|  Wednesday  |     5       |
+|  Saturday   |     5       |
+|  Thursday   |     3       |
+|  Friday     |     1       |
 
 ***
