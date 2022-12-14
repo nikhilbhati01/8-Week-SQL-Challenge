@@ -63,6 +63,29 @@ WHERE time_diff>0;
 Note: For some reason date_part is failing if the date is different for order_time and pickup_time.
 
 
+### 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 
+````sql
 
+WITH sub AS (SELECT customer_orders.order_id, COUNT(customer_orders.order_id) AS pizza_order,order_time,pickup_time, DATE_PART('minute', pickup_time::TIME - order_time::TIME) AS time_diff
+FROM pizza_runner.customer_orders
+LEFT JOIN pizza_runner.runner_orders
+ON customer_orders.order_id = runner_orders.order_id
+WHERE pickup_time != 'null'
+GROUP BY customer_orders.order_id,order_time,pickup_time)
+
+SELECT pizza_order, AVG(time_diff) as avg_prep_time_min
+FROM sub
+WHERE time_diff>0
+GROUP BY pizza_order
+ORDER BY pizza_order;
+````
+
+#### Answer:
+
+| pizza_order | avg_prep_time_min |
+| ----------- | ----------------- |
+| 1           | 10                |
+| 2           | 15                |
+| 3           | 29                |
 
