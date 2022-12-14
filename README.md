@@ -26,6 +26,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 
 ![image](https://user-images.githubusercontent.com/81607668/127271130-dca9aedd-4ca9-4ed8-b6ec-1e1920dca4a8.png)
 
+### View my solutions [here](https://github.com/dsNikhilds/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/Solution.md)
 
 ***
 
@@ -43,7 +44,9 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 ![image](https://user-images.githubusercontent.com/81607668/127271531-0b4da8c7-8b24-4a14-9093-0795c4fa037e.png)
 
-  
+### View my solutions [here](https://github.com/dsNikhilds/8-Week-SQL-Challenge/tree/main/Case%20Study%20%232:%20Pizza%20Runner)
+
+
 ***
 
 ## Case Study #3: Foodie-Fi
