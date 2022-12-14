@@ -30,14 +30,16 @@ ORDER BY registration_week;
 ### 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 
 ````sql
- SELECT customer_orders.order_id,runner_id,order_time,pickup_time, AVG(
-              DATE_PART('minute', pickup_time::TIME - order_time::TIME)) AS time_diff
+WITH sub AS (SELECT customer_orders.order_id,runner_id,order_time,pickup_time, DATE_PART('minute', pickup_time::TIME - order_time::TIME) AS time_diff
 FROM pizza_runner.customer_orders
 LEFT JOIN pizza_runner.runner_orders
 ON customer_orders.order_id = runner_orders.order_id
 WHERE pickup_time != 'null'
-GROUP BY customer_orders.order_id,order_time,pickup_time,runner_id
-ORDER BY customer_orders.order_id;
+GROUP BY customer_orders.order_id,order_time,pickup_time,runner_id)
+
+SELECT AVG(time_diff) as Avg_pickup_time_min
+FROM sub
+WHERE time_diff>0;
 ````
 
 #### Answer:
@@ -52,6 +54,10 @@ ORDER BY customer_orders.order_id;
 | 7        | 2         | 2020-01-08T21:20:29.000Z | 2020-01-08 21:30:45 | 10        |
 | 8        | 2         | 2020-01-09T23:54:33.000Z | 2020-01-10 00:15:02 | -39       |
 | 10       | 1         | 2020-01-11T18:34:49.000Z | 2020-01-11 18:50:20 | 15        |
+
+| Avg_pickup_time_min |
+| ----------------    |        
+|     14              | 
 
 
 Note: For some reason date_part is failing if the date is different for order_time and pickup_time.
