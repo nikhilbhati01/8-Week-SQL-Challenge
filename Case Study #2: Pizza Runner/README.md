@@ -32,6 +32,9 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 9. What was the total volume of pizzas ordered for each hour of the day?
 10. What was the volume of orders for each day of the week?
 
+![solution] (https://github.com/dsNikhilds/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232:%20Pizza%20Runner/A.%20Pizza%20Metrics%20Solution.md)
+
+
 ## B. Runner and Customer Experience
 
 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
